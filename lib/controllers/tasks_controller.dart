@@ -32,7 +32,7 @@ class TasksController extends GetxController {
     if (shiftId != null) {
       taskModel.shift_id = shiftsController.targetShift.value!.id!;
       final result = await TasksRepo().createTask(taskModel);
-      currentTasks.add(result);
+      // currentTasks.add(result);
     } else {
       //the task is for the current shift
       taskModel.shift_id = shiftsController.currentShift.value!.id!;

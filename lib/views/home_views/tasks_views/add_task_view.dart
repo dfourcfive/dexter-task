@@ -1,5 +1,6 @@
 import 'package:dexter_task/controllers/tasks_controller.dart';
 import 'package:dexter_task/models/task_model.dart';
+import 'package:dexter_task/views/home_views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -45,7 +46,7 @@ class AddTaskView extends StatelessWidget {
                 ],
                 validator: AppFormValidation().descriptionlValidator),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 if (tasksController.formKey.value.currentState!.validate()) {
                   TaskModel taskModel = TaskModel(
                       description: tasksController.descriptionController.value.text,
@@ -56,7 +57,8 @@ class AddTaskView extends StatelessWidget {
                       shift_id: '' //we'll update the shift_id later
                       );
 
-                  tasksController.addTask(taskModel, Get.parameters['shift_id']);
+                  await tasksController.addTask(taskModel, Get.parameters['shift_id']);
+                  Get.offAllNamed(HomeView.id);
                 }
               },
               child: const Text('Submit'),

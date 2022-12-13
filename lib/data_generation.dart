@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dexter_task/models/resident_model.dart';
 import 'package:dexter_task/models/shift_model.dart';
 import 'package:dexter_task/models/task_model.dart';
+import 'package:get/get.dart';
 
 // a function to generate fake shifts and tasks
 // no assigning here
@@ -13,7 +14,7 @@ Future<void> generateShifts() async {
   final _random = new Random();
 
   for (var i = 0; i < 200; i++) {
-    var today = DateTime(2022, 12, 12);
+    Rx<DateTime> today = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day).obs;
 
     for (var i = 0; i < 3; i++) {
       ShiftType type = i == 0
@@ -21,7 +22,7 @@ Future<void> generateShifts() async {
           : i == 1
               ? ShiftType.MORNING_SHIFT
               : ShiftType.EVENING_SHIFT;
-      ShiftModel shiftModel = ShiftModel(person_in_charge_id: '', type: type, shift_date: today);
+      ShiftModel shiftModel = ShiftModel(person_in_charge_id: '', type: type, shift_date: today.value);
       var doc = await instance.collection('shifts').add(shiftModel.toJson());
       //we generate tasks for each one
       for (var i = 0; i < 5; i++) {
@@ -38,6 +39,6 @@ Future<void> generateShifts() async {
         await instance.collection('tasks').add(taskModel.toJson());
       }
     }
-    today.add(Duration(days: 1));
+    today.value.add(Duration(days: 1));
   }
 }

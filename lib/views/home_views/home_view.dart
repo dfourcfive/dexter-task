@@ -38,14 +38,14 @@ class HomeView extends StatelessWidget {
                         ],
                       ),
                       Container(
-                          padding: EdgeInsets.only(right: 14.0),
+                          padding: const EdgeInsets.only(right: 14.0),
                           child: Material(
-                            shape: CircleBorder(),
+                            shape: const CircleBorder(),
                             clipBehavior: Clip.antiAliasWithSaveLayer,
                             child: InkWell(
                               splashColor: Colors.black26,
                               child: Ink.image(
-                                image: AssetImage("assets/images/person.jpeg"),
+                                image: const AssetImage("assets/images/person.jpeg"),
                                 fit: BoxFit.cover, //Add this line for center crop or use 2nd way
                                 height: 60,
                                 width: 60,
@@ -168,10 +168,10 @@ class HomeView extends StatelessWidget {
                               height: 32,
                               width: 32,
                               decoration: BoxDecoration(
-                                  color: Color(0xFF90EE90).withOpacity(0.4),
-                                  border: Border.all(width: 0.3, color: Color(0xFF90EE90)),
-                                  borderRadius: BorderRadius.all(Radius.circular(5))),
-                              child: Center(
+                                  color: const Color(0xFF90EE90).withOpacity(0.4),
+                                  border: Border.all(width: 0.3, color: const Color(0xFF90EE90)),
+                                  borderRadius: const BorderRadius.all(Radius.circular(5))),
+                              child: const Center(
                                 child: Text(
                                   '5',
                                   style: TextStyle(color: Color(0xFF90EE90)),
@@ -221,10 +221,10 @@ class HomeView extends StatelessWidget {
                               height: 32,
                               width: 32,
                               decoration: BoxDecoration(
-                                  color: Color(0xFF90EE90).withOpacity(0.4),
-                                  border: Border.all(width: 0.3, color: Color(0xFF90EE90)),
-                                  borderRadius: BorderRadius.all(Radius.circular(5))),
-                              child: Center(
+                                  color: const Color(0xFF90EE90).withOpacity(0.4),
+                                  border: Border.all(width: 0.3, color: const Color(0xFF90EE90)),
+                                  borderRadius: const BorderRadius.all(Radius.circular(5))),
+                              child: const Center(
                                 child: Text(
                                   '5',
                                   style: TextStyle(color: Color(0xFF90EE90)),
@@ -274,10 +274,10 @@ class HomeView extends StatelessWidget {
                               height: 32,
                               width: 32,
                               decoration: BoxDecoration(
-                                  color: Color(0xFF90EE90).withOpacity(0.4),
-                                  border: Border.all(width: 0.3, color: Color(0xFF90EE90)),
-                                  borderRadius: BorderRadius.all(Radius.circular(5))),
-                              child: Center(
+                                  color: const Color(0xFF90EE90).withOpacity(0.4),
+                                  border: Border.all(width: 0.3, color: const Color(0xFF90EE90)),
+                                  borderRadius: const BorderRadius.all(Radius.circular(5))),
+                              child: const Center(
                                 child: Text(
                                   '5',
                                   style: TextStyle(color: Color(0xFF90EE90)),
