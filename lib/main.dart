@@ -30,8 +30,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   //await generateShifts();
-  initControllers();
   NurseRepo().listenAndAssignNurse();
+  await initControllers();
   runApp(App(
     local: local,
   ));
@@ -48,6 +48,11 @@ class App extends StatelessWidget {
       designSize: const Size(375, 803),
       //
       builder: (context, child) => GetMaterialApp(
+        onReady: (() {
+          Get.putAsync<AuthController>(() => AuthController().init());
+        }),
+
+        navigatorKey: Get.key,
         debugShowCheckedModeBanner: false,
         translations: local,
         locale: LocaleStrings.defaultLocale,
@@ -67,11 +72,9 @@ class App extends StatelessWidget {
   }
 }
 
-void initControllers() {
+Future<void> initControllers() async {
   Get.put<UserController>(UserController());
   Get.put<NavigationController>(NavigationController());
   Get.put<TasksController>(TasksController());
   Get.put<ShiftsController>(ShiftsController());
-  final authController = Get.put<AuthController>(AuthController());
-  authController.init();
 }

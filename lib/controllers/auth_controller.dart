@@ -21,13 +21,15 @@ class AuthController extends GetxController {
     return Get.find<ShiftsController>();
   }
 
-  Future<void> init() async {
+  Future<AuthController> init() async {
+    
     if (FirebaseAuth.instance.currentUser == null) {
       Get.offNamed(AuthView.id);
     } else {
       await loadAppData();
       Get.offNamed(NavigationView.id);
     }
+    return this;
   }
 
   Future<void> loadAppData() async {
